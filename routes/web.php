@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\FooditemController;
+use App\Http\Controllers\apiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,8 @@ Route::get('/dashboard', [FooditemController::class, 'index'])->name('fooditems.
 Route::resource('fooditems', FooditemController::class)->except(['index']);
 Route::get('/search', [FooditemController::class, 'search'])->name('fooditems.search');
 // Route::resource('dashboard', FooditemController::class);
+
+/* weather api */
+Route::get('/livescore', [apiController::class, 'livescore'])->name('live.scores');
+Route::get('/weather', [apiController::class, 'weather']);
+Route::post('/searchweather', [apiController::class, 'searchweather'])->name('search.weather');
